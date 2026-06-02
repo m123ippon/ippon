@@ -4,37 +4,60 @@
   <meta charset="UTF-8">
   <title>大阪の喫煙できる喫茶店エリア選択</title>
   <style>
-    body { font-family: sans-serif; padding: 40px; }
-    .area-list { display: flex; flex-direction: column; gap: 16px; max-width: 300px; }
-    a {
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .top-btn {
+      display: inline-block;
       padding: 12px 20px;
-      background: #2563eb;
+      background: #22c55e;
       color: white;
       border-radius: 8px;
       text-decoration: none;
-      text-align: center;
       font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .station-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 20px;
+      max-width: 400px;
+    }
+
+    .station-grid a {
+      background: white;
+      padding: 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
 <h1>大阪のエリアを選択</h1>
-<p>喫煙できる喫茶店を探したいエリアを選んでください。</p>
+<a class="top-btn" href="#">現在地から探す</a>
 
-<div class="area-list">
-  <a href="umeda-map.html"
-   style="
-     position:absolute;
-     top:40%;
-     left:55%;
-     width:80px;
-     height:80px;
-     display:block;
-     z-index:10;
-   ">梅田エリア
-</a>
-
+<div class="station-grid">
+  <a href="umeda-map.html">梅田駅</a>
+  <a href="namba-map.html">なんば駅</a>
+  <a href="tennoji-map.html">天王寺駅</a>
+  <a href="osaka.html">大阪駅</a>
+  <a href="kitahama.html">北浜駅</a>
+  <a href="honmachi.html">本町駅</a>
+  <a href="shinsaibashi.html">心斎橋駅</a>
+  <a href="yodoyabashi.html">淀屋橋駅</a>
 </div>
 
 </body>
