@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>本日の一本</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #0f172a;
+      --text-main: #0f172a;
+      --text-sub: #6b7280;
+      --accent: #f97316;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      background: #f3f4f6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ヘッダー */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(10px);
+      color: #e5e7eb;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      font-size: 14px;
+    }
+    nav a {
+      color: #e5e7eb;
+      opacity: 0.85;
+    }
+    nav a:hover {
+      opacity: 1;
+    }
+    .header-cta {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      color: #0f172a;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* ヒーロー */
+    .hero {
+      background: radial-gradient(circle at top left, #1d4ed8 0, #0f172a 40%, #020617 100%);
+      color: #e5e7eb;
+      padding: 72px 0 80px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 40px
+      align-items: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+    .hero-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero-title span {
+      color: #60a5fa;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: #cbd5f5;
+      max-width: 480px;
+      margin-bottom: 24px;
+    }
+    .hero-list {
+      list-style: none;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #cbd5f5;
+    }
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .hero-list span {
+      margin-top: 3px;
+      font-size: 16px;
+      color: #4ade80;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #f9fafb;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    }
+    .btn-secondary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .hero-note {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .hero-visual {
+      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.3), transparent 60%);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual-main {
+      background: #020617;
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+    }
+    .hero-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+    .hero-visual-dots {
+      display: flex;
+      gap: 4px;
+    }
+    .hero-visual-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #4b5563;
+    }
+    .hero-visual-dot:nth-child(1) { background: #f97373; }
+    .hero-visual-dot:nth-child(2) { background: #facc15; }
+    .hero-visual-dot:nth-child(3) { background: #22c55e; }
+
+    .hero-visual-body {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+    .hero-visual-text-title {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+    .hero-visual-text-sub {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+    .hero-visual-metrics {
+      display: flex;
+      gap: 10px;
+      font-size: 10px;
+    }
+    .metric-card {
+      flex: 1;
+      padding: 8px;
+      border-radius: 10px;
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.4), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+    }
+    .metric-label {
+      font-size: 9px;
+      color: #cbd5f5;
+      margin-bottom: 4px;
+    }
+    .metric-value {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .metric-tag {
+      margin-top: 4px;
+      font-size: 9px;
+      color: #bbf7d0;
+    }
+
+    .hero-visual-image {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: linear-gradient(135deg, #0f172a, #1f2937);
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 11px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .hero-floating-tag {
+      position: absolute;
+      bottom: 14px;
+      right: 18px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 10px;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-floating-tag span {
+      font-size: 14px;
+      color: #facc15;
+    }
+
+    /* セクション共通 */
+    section {
+      padding: 64px 0;
+      background: #f9fafb;
+    }
+    section:nth-of-type(even) {
+      background: #ffffff;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      font-size: 13px;
+      text-align: center;
+      color: var(--text-sub);
+      margin-bottom: 32px;
+    }
+
+    /* 特長 */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .feature-icon.blue { background: rgba(37, 99, 235, 0.08); color: #2563eb; }
+    .feature-icon.orange { background: rgba(249, 115, 22, 0.08); color: #f97316; }
+    .feature-icon.green { background: rgba(34, 197, 94, 0.08); color: #16a34a; }
+    .feature-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .feature-text {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+    }
+    .feature-tag {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--primary-dark);
+      background: rgba(37, 99, 235, 0.06);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    /* 画像セクション */
+    .visual-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+    .visual-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background: #e5e7eb;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      font-size: 13px;
+      text-align: center;
+      padding: 16px;
+    }
+    .visual-text-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .visual-text-body {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 16px;
+    }
+    .visual-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+    .visual-list li {
+      margin-bottom: 6px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 60px 16px 70px;
+      background: radial-gradient(circle at top, #1d4ed8 0, #0f172a 45%, #020617 100%);
+      color: #e5e7eb;
+    }
+    .cta-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .cta-sub {
+      font-size: 13px;
+      color: #cbd5f5;
+      margin-bottom: 24px;
+    }
+    .cta-form {
+      max-width: 420px;
+      margin: 0 auto 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+    .cta-label {
+      font-size: 12px;
+      color: #cbd5f5;
+    }
+    .cta-input, .cta-textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 9px 10px;
+      font-size: 13px;
+      background: rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+    }
+    .cta-textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .cta-button {
+      margin-top: 6px;
+      width: 100%;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #f9fafb;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(234, 88, 12, 0.4);
+    }
+    .cta-note {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hero-inner,
+      .hero-visual-body,
+      .visual-section,
+      .features {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero {
+        padding-top: 56px;
+      }
+      .hero-visual {
+        margin-top: 10px;
+      }
+      section {
+        padding: 48px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo">YOUR BRAND</div>
+      <nav>
+        <ul>
+          <li><a href="#features">特長</a></li>
+          <li><a href="#visual">イメージ</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="header-cta">無料で相談する</a>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="badge">
+          <div class="badge-dot"></div>
+          新しいLPテンプレート
+        </div>
+        <h1 class="hero-title">
+          私服なひと時を<span>成果の出るLP</span>を。
+        </h1>
+        <p class="hero-sub">
+          「なんとなく作ったページ」から卒業しませんか？  
+          コピー、デザイン、構成まで一体で考えたLPテンプレートで、あなたのサービスの魅力を最短で届けます。
+        </p>
+        <ul class="hero-list">
+          <li><span>✓</span> スマホ・PC両対応のレスポンシブデザイン</li>
+          <li><span>✓</span> すぐに使えるセクション構成とダミーテキスト</li>
+          <li><span>✓</span> 画像差し替えだけで「それっぽく」仕上がるUI</li>
+        </ul>
+        <div class="hero-actions">
+          <button class="btn-primary">このテンプレートを使ってみる</button>
+          <button class="btn-secondary">デモページを見る</button>
+        </div>
+        <p class="hero-note">
+          ※ コードは1ファイルのみ。静的ホスティングにそのままアップロードできます。
+        </p>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-main">
+          <div class="hero-visual-header">
+            <div class="hero-visual-dots">
+              <div class="hero-visual-dot"></div>
+              <div class="hero-visual-dot"></div>
+              <div class="hero-visual-dot"></div>
+            </div>
+            <div>sample-lp.html</div>
+          </div>
+          <div class="hero-visual-body">
+            <div>
+              <div class="hero-visual-text-title">LP改善後のコンバージョン率</div>
+              <div class="hero-visual-text-sub">
+                デザインとコピーを整えるだけで、  
+                お問い合わせ率がどれだけ変わるかの一例です。
+              </div>
+              <div class="hero-visual-metrics">
+                <div class="metric-card">
+                  <div class="metric-label">Before</div>
+                  <div class="metric-value">1.2%</div>
+                  <div class="metric-tag">雑多な情報・訴求が不明瞭</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">After</div>
+                  <div class="metric-value" style="color:#4ade80;">3.8%</div>
+                  <div class="metric-tag">訴求を1つに絞った構成</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-visual-image">
+              ここにサービスのイメージ画像や  
+              スクリーンショットを配置してください。  
+              （例：ダッシュボード、アプリ画面など）
+            </div>
+          </div>
+        </div>
+        <div class="hero-floating-tag">
+          <span>★</span> コードコピペですぐ試せる
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特長 -->
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">このLPテンプレートの特長</h2>
+      <p class="section-sub">
+        「とりあえずそれっぽく見える」だけでなく、  
+        読み手の行動を後押しするための要素を散りばめています。
+      </p>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon blue">A</div>
+          <div class="feature-title">コピーが入れやすい構成</div>
+          <p class="feature-text">
+            ヒーロー、特長、イメージ、CTAといった基本セクションをあらかじめ用意。  
+            あなたのサービスの文章に置き換えるだけで、自然な流れが作れます。
+          </p>
+          <span class="feature-tag">構成に悩まない</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon orange">B</div>
+          <div class="feature-title">シンプルで編集しやすいHTML/CSS</div>
+          <p class="feature-text">
+            フレームワーク不使用のプレーンなHTML/CSS。  
+            既存サイトへの組み込みや、細かなデザイン調整も直感的に行えます。
+          </p>
+          <span class="feature-tag">学習コストが低い</span>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon green">C</div>
+          <div class="feature-title">静的ホスティングと相性抜群</div>
+          <p class="feature-text">
+            1ファイルで完結するため、GitHub Pages や Netlify などの  
+            静的ホスティングにそのままアップロードして公開できます。
+          </p>
+          <span class="feature-tag">すぐ公開できる</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 画像・イメージセクション -->
+  <section id="visual">
+    <div class="container visual-section">
+      <div class="visual-image">
+        ここにメインビジュアル画像を配置してください。<br><br>
+        ・サービスの利用シーン<br>
+        ・ビフォー／アフターのイメージ<br>
+        ・チーム写真やブランドイメージ など
+      </div>
+      <div>
+        <h3 class="visual-text-title">「なんとなく作ったLP」からの卒業</h3>
+        <p class="visual-text-body">
+          多くのLPは、「とりあえず情報を詰め込んだだけ」の状態で公開されています。  
+          しかし、読み手が知りたいのは「自分にとって何が変わるのか」という一点だけ。  
+          このテンプレートは、その一点を伝えるための構成をベースにしています。
+        </p>
+        <ul class="visual-list">
+          <li>・ファーストビューで「誰の・どんな悩み」を明確に</li>
+          <li>・中盤で「なぜそれが解決できるのか」を丁寧に説明</li>
+          <li>・最後に「今すぐできる一歩」を具体的に提示</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / お問い合わせ -->
+  <section id="contact" class="cta">
+    <div class="container">
+      <h2 class="cta-title">あなたのサービス用にカスタマイズしませんか？</h2>
+      <p class="cta-sub">
+        「このテンプレートをベースに、自分のサービス向けに調整したい」  
+        そんな場合は、下記フォームからお気軽にご相談ください。
+      </p>
+
+      <form class="cta-form">
+        <div>
+          <label class="cta-label">お名前</label>
+          <input class="cta-input" type="text" placeholder="例）山田 太郎" />
+        </div>
+        <div>
+          <label class="cta-label">メールアドレス</label>
+          <input class="cta-input" type="email" placeholder="例）sample@example.com" />
+        </div>
+        <div>
+          <label class="cta-label">ご相談内容</label>
+          <textarea class="cta-textarea" placeholder="例）このLPテンプレートをベースに、◯◯向けのページを作りたいです。"></textarea>
+        </div>
+        <button type="button" class="cta-button">送信する（ダミー）</button>
+      </form>
+
+      <p class="cta-note">
+        ※ このフォームはデモ用です。実際の送信処理は実装されていません。  
+        静的ホスティングで運用する場合は、外部フォームサービスやAPIと連携してください。
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Your Brand / Sample Landing Page Template
+    </div>
+  </footer>
+
+</body>
+</html>
