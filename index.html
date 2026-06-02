@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>本日の一本｜喫煙できる喫茶店を探すなら</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     :root {
       --primary: #2563eb;
@@ -13,657 +14,303 @@
       --text-sub: #6b7280;
       --accent: #f97316;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f3f4f6;
+      color: var(--text-main);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
+
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
 
     /* ヘッダー */
     header {
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      padding: 12px 16px;
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(15, 23, 42, 0.96);
-      backdrop-filter: blur(10px);
-      color: #e5e7eb;
     }
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
+
     .logo {
       font-weight: 700;
+      font-size: 16px;
       letter-spacing: 0.08em;
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-    nav ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      font-size: 14px;
-    }
-    nav a {
-      color: #e5e7eb;
-      opacity: 0.85;
-    }
-    nav a:hover {
-      opacity: 1;
-    }
-    .header-cta {
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      color: #0f172a;
-      font-size: 13px;
-      font-weight: 600;
     }
 
     /* ヒーロー */
     .hero {
       background: radial-gradient(circle at top left, #1d4ed8 0, #0f172a 40%, #020617 100%);
       color: #e5e7eb;
-      padding: 72px 0 80px;
-    }
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
+      padding: 40px 20px;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.7);
       border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
+      font-size: 10px;
+      margin-bottom: 14px;
     }
+
     .badge-dot {
       width: 8px;
       height: 8px;
-      border-radius: 999px;
       background: #22c55e;
+      border-radius: 999px;
     }
+
     .hero-title {
-      font-size: clamp(28px, 4vw, 40px);
+      font-size: 24px;
       font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      line-height: 1.3;
     }
+
     .hero-title span {
       color: #60a5fa;
     }
+
     .hero-sub {
       font-size: 14px;
+      margin-bottom: 20px;
       color: #cbd5f5;
-      max-width: 480px;
-      margin-bottom: 24px;
     }
+
     .hero-list {
       list-style: none;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       font-size: 13px;
       color: #cbd5f5;
     }
+
     .hero-list li {
       display: flex;
-      align-items: flex-start;
-      gap: 8px;
+      gap: 6px;
       margin-bottom: 6px;
     }
+
     .hero-list span {
-      margin-top: 3px;
-      font-size: 16px;
       color: #4ade80;
+      font-size: 16px;
     }
+
     .hero-actions {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 12px;
       margin-bottom: 16px;
     }
+
     .btn-primary {
-      padding: 10px 20px;
+      padding: 14px;
       border-radius: 999px;
-      border: none;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #f9fafb;
-      font-size: 14px;
+      color: #fff;
+      font-size: 15px;
       font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      text-align: center;
     }
+
     .btn-secondary {
-      padding: 10px 18px;
+      padding: 12px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      background: transparent;
       color: #e5e7eb;
       font-size: 13px;
-      cursor: pointer;
+      text-align: center;
     }
+
     .hero-note {
       font-size: 11px;
       color: #9ca3af;
     }
 
+    /* 画像部分（スマホは縦並び） */
     .hero-visual {
-      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.3), transparent 60%);
-      border-radius: 24px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-visual-main {
-      background: #020617;
-      border-radius: 18px;
-      padding: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-    }
-    .hero-visual-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 11px;
-      color: #9ca3af;
-    }
-    .hero-visual-dots {
-      display: flex;
-      gap: 4px;
-    }
-    .hero-visual-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #4b5563;
-    }
-    .hero-visual-dot:nth-child(1) { background: #f97373; }
-    .hero-visual-dot:nth-child(2) { background: #facc15; }
-    .hero-visual-dot:nth-child(3) { background: #22c55e; }
-
-    .hero-visual-body {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 14px;
-      align-items: center;
-    }
-    .hero-visual {
-  position: relative;
-  z-index: 0;
-}
-
-.hero-actions {
-  position: relative;
-  z-index: 10;
-}
-    .hero-visual-text-title {
-      font-size: 13px;
-      color: #e5e7eb;
-      margin-bottom: 6px;
-    }
-    .hero-visual-text-sub {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-bottom: 10px;
-    }
-    .hero-visual-metrics {
-      display: flex;
-      gap: 10px;
-      font-size: 10px;
-    }
-    .metric-card {
-      flex: 1;
-      padding: 8px;
-      border-radius: 10px;
-      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.4), rgba(15, 23, 42, 0.9));
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: #e5e7eb;
-    }
-    .metric-label {
-      font-size: 9px;
-      color: #cbd5f5;
-      margin-bottom: 4px;
-    }
-    .metric-value {
-      font-size: 14px;
-      font-weight: 700;
-    }
-    .metric-tag {
-      margin-top: 4px;
-      font-size: 9px;
-      color: #bbf7d0;
+      margin-top: 24px;
+      background: rgba(255,255,255,0.05);
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.4);
     }
 
-    .hero-visual-image {
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: linear-gradient(135deg, #0f172a, #1f2937);
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #9ca3af;
-      font-size: 11px;
-      text-align: center;
-      padding: 10px;
+    .hero-visual-image img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
     }
 
-    .hero-floating-tag {
-      position: absolute;
-      bottom: 14px;
-      right: 18px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      font-size: 10px;
-      color: #e5e7eb;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .hero-floating-tag span {
-      font-size: 14px;
-      color: #facc15;
-    }
-
-    /* セクション共通 */
+    /* 特長 */
     section {
-      padding: 64px 0;
-      background: #f9fafb;
+      padding: 40px 20px;
+      background: #fff;
     }
-    section:nth-of-type(even) {
-      background: #ffffff;
-    }
+
     .section-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       text-align: center;
       margin-bottom: 10px;
     }
+
     .section-sub {
       font-size: 13px;
       text-align: center;
       color: var(--text-sub);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
-    /* 特長 */
     .features {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .feature-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 18px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
-    }
-    .feature-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      font-size: 18px;
+      flex-direction: column;
+      gap: 16px;
     }
-    .feature-icon.blue { background: rgba(37, 99, 235, 0.08); color: #2563eb; }
-    .feature-icon.orange { background: rgba(249, 115, 22, 0.08); color: #f97316; }
-    .feature-icon.green { background: rgba(34, 197, 94, 0.08); color: #16a34a; }
+
+    .feature-card {
+      background: #fff;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+    }
+
     .feature-title {
       font-size: 15px;
       font-weight: 600;
       margin-bottom: 6px;
     }
+
     .feature-text {
       font-size: 13px;
       color: var(--text-sub);
-      margin-bottom: 10px;
-    }
-    .feature-tag {
-      display: inline-block;
-      font-size: 11px;
-      color: var(--primary-dark);
-      background: rgba(37, 99, 235, 0.06);
-      padding: 3px 8px;
-      border-radius: 999px;
-    }
-
-    /* 画像セクション */
-    .visual-section {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: center;
-    }
-    .visual-image {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid #e5e7eb;
-      background: #e5e7eb;
-      height: 260px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6b7280;
-      font-size: 13px;
-      text-align: center;
-      padding: 16px;
-    }
-    .visual-text-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .visual-text-body {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-bottom: 16px;
-    }
-    .visual-list {
-      list-style: none;
-      font-size: 13px;
-      color: var(--text-main);
-    }
-    .visual-list li {
-      margin-bottom: 6px;
     }
 
     /* CTA */
     .cta {
-      text-align: center;
-      padding: 60px 16px 70px;
       background: radial-gradient(circle at top, #1d4ed8 0, #0f172a 45%, #020617 100%);
       color: #e5e7eb;
+      padding: 40px 20px;
+      text-align: center;
     }
+
     .cta-title {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       margin-bottom: 10px;
     }
+
     .cta-sub {
       font-size: 13px;
-      color: #cbd5f5;
-      margin-bottom: 24px;
-    }
-    .cta-form {
-      max-width: 420px;
-      margin: 0 auto 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      text-align: left;
-    }
-    .cta-label {
-      font-size: 12px;
-      color: #cbd5f5;
-    }
-    .cta-input, .cta-textarea {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      padding: 9px 10px;
-      font-size: 13px;
-      background: rgba(15, 23, 42, 0.8);
-      color: #e5e7eb;
-    }
-    .cta-textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-    .cta-button {
-      margin-top: 6px;
-      width: 100%;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      color: #f9fafb;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 14px 30px rgba(234, 88, 12, 0.4);
-    }
-    .cta-note {
-      font-size: 11px;
-      color: #9ca3af;
+      margin-bottom: 20px;
     }
 
-    /* レスポンシブ */
-    @media (max-width: 768px) {
-      nav { display: none; }
-      .hero-inner,
-      .hero-visual-body,
-      .visual-section,
-      .features {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero {
-        padding-top: 56px;
-      }
-      .hero-visual {
-        margin-top: 10px;
-      }
-      section {
-        padding: 48px 0;
-      }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cta-input, .cta-textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.8);
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .cta-button {
+      padding: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #6b7280;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ヘッダー -->
-  <header>
-    <div class="container header-inner">
-      <div class="logo">本日の一本</div>
-      <nav>
-        <ul>
-          <li><a href="#features">特長</a></li>
-          <li><a href="#visual">喫茶店イメージ</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-      </nav>
-      <a href="#contact" class="header-cta">喫煙OKの店を探す</a>
+<header>
+  <div class="logo">本日の一本</div>
+</header>
+
+<section class="hero">
+  <div class="badge"><div class="badge-dot"></div>喫煙者のための喫煙可能飲食店ガイド</div>
+
+  <h1 class="hero-title">本日の一本で、<span>喫煙できる飲食店</span>を見つけよう。</h1>
+
+  <p class="hero-sub">「タバコを吸える場所がない…」そんな悩みを解決。</p>
+
+  <ul class="hero-list">
+    <li><span>✓</span> 喫煙可能な飲食店だけを厳選</li>
+    <li><span>✓</span> 店内雰囲気・営業時間・場所までわかる</li>
+  </ul>
+
+  <div class="hero-actions">
+    <a href="osaka.html" class="btn-primary">喫煙できる飲食店探す</a>
+    <a href="#" class="btn-secondary">喫煙グッズを見る（準備中）</a>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-image">
+      <img src="images/smoke-silhouette.jpg" alt="喫煙シルエット">
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- ヒーロー -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div>
-        <div class="badge">
-          <div class="badge-dot"></div>
-          喫煙者のための喫煙可能飲食店ガイド
-        </div>
-        <h1 class="hero-title">
-          本日の一本で、<span>喫煙できる飲食店</span>を見つけよう。
-        </h1>
-        <p class="hero-sub">
-          「タバコを吸える場所がない…」そんな悩みを解決。<br/>
-          本日の一本は、喫煙可能な喫茶店や居酒屋を紹介するメディアです。
-        </p>
-        <ul class="hero-list">
-          <li><span>✓</span> 喫煙可能な飲食店だけを厳選して紹介</li>
-          <li><span>✓</span> 店内雰囲気・営業時間・場所までわかる</li>
-        </ul>
-        <div class="hero-actions">
-          <a href="osaka.html" class="btn-primary">喫煙できる飲食店探す</a>
-          <a href="https://www.saint-louis.jp/?utm_source=Yahoo&utm_medium=cpc&utm_campaign=product_2024&yclid=YSS.EAIaIQobChMIta3Kl63mlAMVL_xMAh0Cpx5-EAAYASAAEgJzefD_BwE&sa_p=YSA&sa_cc&sa_t=1780327623826&sa_ra=2A" class="btn-secondary">喫煙グッズを見る（準備中）</a>
-        </div>
+<section id="features">
+  <h2 class="section-title">本日の一本の特長</h2>
+  <p class="section-sub">喫煙者が快適に過ごせる場所を紹介</p>
 
-        <p class="hero-note">
-          ※ 掲載店舗は随時更新しています。
-        </p>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-visual-main">
-          <div class="hero-visual-header">
-            <div class="hero-visual-dots">
-              <div class="hero-visual-dot"></div>
-              <div class="hero-visual-dot"></div>
-              <div class="hero-visual-dot"></div>
-            </div>
-            <div>smoke-guide.html</div>
-          </div>
-          <div class="hero-visual-body">
-            <div>
-              <div class="hero-visual-text-title">喫煙者向けの快適な時間を</div>
-              <div class="hero-visual-text-sub">
-                喫煙できる飲食店を探すストレスをなくし、  
-                自分のペースでくつろげる場所を見つけられます。
-              </div>
-              <div class="hero-visual-metrics">
-                <div class="metric-card">
-                  <div class="metric-label">掲載店舗数</div>
-                  <div class="metric-value">〇件</div>
-                  <div class="metric-tag">関西圏中心</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-label">更新頻度</div>
-                  <div class="metric-value" style="color:#4ade80;">週2～3回</div>
-                  <div class="metric-tag">最新情報を反映</div>
-                </div>
-              </div>
-            </div>
-            <div class="hero-visual-image">
-              <img src="images/smoke-silhouette.jpg" alt="喫煙シルエット画像" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-          </div>
-        </div>
-        <div class="hero-floating-tag">
-          <span>★</span> 画像は自由に差し替え可能
-        </div>
-      </div>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-title">喫煙可能な飲食店だけを掲載</div>
+      <p class="feature-text">実際に足を運び、喫煙可能か確認したうえで掲載。</p>
     </div>
-  </section>
 
-  <!-- 特長 -->
-  <section id="features">
-    <div class="container">
-      <h2 class="section-title">本日の一本の特長</h2>
-      <p class="section-sub">
-        喫煙者が快適に過ごせる場所をまとめて紹介
-      </p>
-
-      <div class="features">
-        <div class="feature-card">
-          <div class="feature-icon blue">A</div>
-          <div class="feature-title">喫煙可能な飲食店だけを掲載</div>
-          <p class="feature-text">
-            本日の一本が足を運び
-            喫煙可能かどうかを確認したうえで掲載。
-          </p>
-          <span class="feature-tag">信頼できる情報</span>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon orange">B</div>
-          <div class="feature-title">都度更新される店舗情報</div>
-          <p class="feature-text">
-            新しく伺ったお店や、
-            喫煙不可になったお店も随時反映。
-          </p>
-          <span class="feature-tag">こだわりのアイテム</span>
-        </div>
-
-        <!-- <div class="feature-card">
-          <div class="feature-icon green">C</div>
-          <div class="feature-title">毎日更新される店舗情報</div>
-          <p class="feature-text">
-            新しく喫煙可能になった店舗や、  
-            逆に喫煙不可になった店舗も随時反映。
-          </p>
-          <span class="feature-tag">常に最新</span>
-        </div> -->
-      </div>
+    <div class="feature-card">
+      <div class="feature-title">都度更新される店舗情報</div>
+      <p class="feature-text">新しく伺ったお店や、喫煙不可になったお店も随時反映。</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 画像・イメージセクション -->
-  <section id="visual">
-    <div class="container visual-section">
-      <div class="visual-image">
-        <img src="images/smoke-silhouette.jpg" alt="喫煙シルエット画像" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-      <div>
-        <h3 class="visual-text-title">喫煙できる場所をもっと自由に</h3>
-        <p class="visual-text-body">
-          喫煙者にとって「吸える場所があるかどうか」は重要なポイント。  
-          本日の一本は、あなたの街で安心して吸える喫茶店を紹介します。
-        </p>
-        <ul class="visual-list">
-          <li>・落ち着いた雰囲気の喫茶店を厳選</li>
-          <li>・分煙・完全喫煙席など細かい情報も掲載</li>
-          <li>・外出先で便利な喫煙グッズも紹介</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<section id="contact" class="cta">
+  <h2 class="cta-title">喫煙できる喫茶店を一緒に増やしませんか？</h2>
+  <p class="cta-sub">掲載依頼・コラボなどお気軽にお問い合わせください。</p>
 
-  <!-- CTA -->
-  <section id="contact" class="cta">
-    <div class="container">
-      <h2 class="cta-title">喫煙できる喫茶店を一緒に増やしませんか？</h2>
-      <p class="cta-sub">
-        掲載依頼・コラボ・喫煙グッズの取り扱いなど、  
-        お気軽にお問い合わせください。
-      </p>
+  <form class="cta-form">
+    <input class="cta-input" type="text" placeholder="お名前">
+    <input class="cta-input" type="email" placeholder="メールアドレス">
+    <textarea class="cta-textarea" placeholder="お問い合わせ内容"></textarea>
+    <button type="button" class="cta-button">送信する（ダミー）</button>
+  </form>
+</section>
 
-      <form class="cta-form">
-        <div>
-          <label class="cta-label">お名前</label>
-          <input class="cta-input" type="text" placeholder="例）山田 太郎" />
-        </div>
-        <div>
-          <label class="cta-label">メールアドレス</label>
-          <input class="cta-input" type="email" placeholder="例）sample@example.com" />
-        </div>
-        <div>
-          <label class="cta-label">お問い合わせ内容</label>
-          <textarea class="cta-textarea" placeholder="例）掲載依頼をしたいです。"></textarea>
-        </div>
-        <button type="button" class="cta-button">送信する（ダミー）</button>
-      </form>
-
-      <p class="cta-note">
-        ※ このフォームはデモ用です。実際の送信処理は実装されていません。
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      © 2026 本日の一本 / Smoking Cafe Guide
-    </div>
-  </footer>
+<footer>
+  © 2026 本日の一本 / Smoking Cafe Guide
+</footer>
 
 </body>
 </html>
