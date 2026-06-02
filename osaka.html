@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>大阪の喫煙できる喫茶店エリア選択</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     body {
       font-family: sans-serif;
@@ -11,42 +13,57 @@
     }
 
     h1 {
-      margin-bottom: 10px;
+      margin-bottom: 16px;
+      font-size: 20px;
+      font-weight: bold;
     }
 
     .top-btn {
-      display: inline-block;
-      padding: 12px 20px;
+      display: block;
+      width: 100%;
+      padding: 16px;
       background: #22c55e;
       color: white;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 17px;
     }
 
     .station-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 20px;
-      max-width: 400px;
+      grid-template-columns: 1fr; /* ← スマホは1列 */
+      gap: 16px;
     }
 
     .station-grid a {
+      display: block;
+      width: 100%;
       background: white;
-      padding: 12px;
-      border-radius: 6px;
+      padding: 18px;
+      border-radius: 12px;
       text-decoration: none;
       color: #333;
       font-weight: bold;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
+      font-size: 17px;
+    }
+
+    /* PCだけ2列にする */
+    @media (min-width: 600px) {
+      .station-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
 <h1>大阪のエリアを選択</h1>
+
 <a class="top-btn" href="#">現在地から探す</a>
 
 <div class="station-grid">
