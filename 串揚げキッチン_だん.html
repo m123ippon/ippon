@@ -11,24 +11,26 @@
     }
 
     .image-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 24px;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ← 3列にする */
+  gap: 12px;
+  margin-top: 24px;
+}
 
-    .image-grid img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover; /* ← 画像の形を整える */
+}
 
-    /* スマホは1列にする */
-    @media (max-width: 600px) {
-      .image-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+/* スマホは1列 */
+@media (max-width: 600px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
     .description-box {
       margin-top: 20px;
@@ -55,14 +57,6 @@
     referrerpolicy="no-referrer-when-downgrade">
   </iframe>
 </div>
-
-<!-- 画像3枚 -->
-<div class="image-grid">
-  <img src="images/image1.jpg" alt="店内写真1">
-  <img src="images/image2.jpg" alt="店内写真2">
-  <img src="images/image3.jpg" alt="料理写真">
-</div>
-
 <!-- 説明文 -->
 <div class="description-box">
   <h2>お店の紹介</h2>
@@ -74,6 +68,14 @@
     『木の優しい雰囲気に包まれて愉しむミシュランの味』
   </p>
 </div>
+<!-- 画像3枚 -->
+<div class="image-grid">
+  <img src="images/image1.jpg" alt="店内写真1">
+  <img src="images/image2.jpg" alt="店内写真2">
+  <img src="images/image3.jpg" alt="料理写真">
+</div>
+
+
 
 </body>
 </html>
