@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>串揚げキッチン だん</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      padding: 20px; 
+      background: #fafafa;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* スマホは1列にする */
+    @media (max-width: 600px) {
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .description-box {
+      margin-top: 20px;
+      padding: 16px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<h1>串揚げキッチン　だん</h1>
+
+<div style="border-radius: 16px; overflow: hidden; margin-top: 20px;">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13119.762673787955!2d135.48711107833816!3d34.706676400000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e7af4f38135f%3A0xaac77fb654790ed9!2z5Liy5o-a44GS44Kt44OD44OB44Oz44Gg44KTIOaiheeUsOW6lw!5e0!3m2!1sja!2sjp!4v1780403493248!5m2!1sja!2sjp"
+    width="100%" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+<!-- 画像3枚 -->
+<div class="image-grid">
+  <img src="/images/image1.jpg" alt="店内写真1">
+  <img src="/images/image2.jpg" alt="店内写真2">
+  <img src="/images/image3.jpg" alt="料理写真">
+</div>
+
+<!-- 説明文 -->
+<div class="description-box">
+  <h2>お店の紹介</h2>
+  <p>
+    お店🏠:串揚げキッチン だん 十三店<br/>
+    場所📍:大阪府大阪市淀川区十三東2-9-14 第一ビル１階<br/>
+    時間⏰:月〜日 17:30〜22:30<br/>
+              （L.O.22:00）<br/>
+    『木の優しい雰囲気に包まれて愉しむミシュランの味』
+  </p>
+</div>
+
+</body>
+</html>
